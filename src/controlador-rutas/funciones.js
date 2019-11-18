@@ -2,7 +2,7 @@ import {
     btnDatos,
     btnTotal
 } from "../controlador-rutas/tabla.js";
-let arr = [];
+ export let arr = [];
 let obj = {
     sabor: null,
     adicional: []
@@ -89,7 +89,7 @@ export const templates = (doc) => {
         btnDatos(nuevoObj)
         btnTotal(nuevoObj);
         obj.adicional = [];
-        console.log(obj.adicional)
+       console.log(arrProducto)
         
      })
 
@@ -114,7 +114,7 @@ export const templates = (doc) => {
             arr.push(obj);
          
             btnDatos(obj);
-            console.log(btnDatos)
+        
 
             btnTotal(obj);
         } else {

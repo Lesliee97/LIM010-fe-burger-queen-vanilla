@@ -1,5 +1,6 @@
-import { arrProducto } from "../controlador-rutas/funciones.js";
+import { arrProducto, arr } from "../controlador-rutas/funciones.js";
 import { guardarPedidos } from '../controlador-firebase/controlador-fb.js'
+
 let sumaTotal = 0
 //
 export const btnDatos = (doc) => {
@@ -11,7 +12,7 @@ export const btnDatos = (doc) => {
           <td><button class="btnEliminar" id="${doc.id}">X</button></td>`;
   const box1 = document.querySelector('#containerTabla');
   box1.appendChild(btnPintardato);
-  console.log(box1)
+
   const subtotal = doc.precio * doc.cantidad
   
   sumaTotal += subtotal
@@ -42,12 +43,11 @@ export const btnTotal = () => {
                                               
   const btnEnviar = btnPintartotal.querySelector('.btnEnviar');
   btnEnviar.addEventListener('click',()=>{
-    guardarPedidos({arrProducto});
+    guardarPedidos({arr});
     const box1 = document.querySelector('#containerTabla');
     box1.innerHTML = '';
     const box2 = document.querySelector('#total');
     box2.innerHTML = '';
-  
     localStorage.removeItem('ordenes');
   })
 
