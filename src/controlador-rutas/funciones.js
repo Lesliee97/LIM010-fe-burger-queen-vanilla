@@ -1,7 +1,7 @@
 import { templateOrders, templateTotal} from "../controlador-rutas/tabla.js";
 import {adicionales} from '../controlador-rutas/adicionales.js'
 export let arr = [];
-console.log(arr)
+
 
 export const templateProducts = (doc) => {
 
@@ -56,7 +56,5 @@ export const templateProducts = (doc) => {
 };
 
 
-export const arrProducto = JSON.parse(localStorage.getItem('ordenes', JSON.stringify({arr})));
 
-
-
+export const getPosts = () => JSON.parse(localStorage.getItem('ordenes', JSON.stringify({arr})));

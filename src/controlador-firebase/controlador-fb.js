@@ -4,3 +4,6 @@ export const verDataFb = (string) => {
  export const guardarPedidos = (arrObj) => {
    return firebase.firestore().collection('Pedidos').add(arrObj);
 }
+export const  getOrders = (arrayObj) => {
+   return firebase.firestore().collection(arrayObj).get();
+};

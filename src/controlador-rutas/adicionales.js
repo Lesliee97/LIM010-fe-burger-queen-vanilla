@@ -2,7 +2,7 @@ import {templateTotal, templateOrders} from '../controlador-rutas/tabla.js'
 import {arr} from '../controlador-rutas/funciones.js'
 
 
-let obj = {
+ export let obj = {
   sabor: null,
   adicional: []
 };
@@ -78,7 +78,7 @@ const btnAdicional = containerBurger.querySelectorAll('.adicional');
     templateOrders(nuevoObj);
     templateTotal(nuevoObj);
     obj.adicional=[]
-
+    
     
 
  })
