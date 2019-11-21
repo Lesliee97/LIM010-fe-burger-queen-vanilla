@@ -1,13 +1,20 @@
-export const templatePedidos = (doc) =>{
-       const divProductss = document.createElement('div');
-       divProductss.className = 'btnProducto';
+// import { orders } from "../controlador-firebase/controlador-fb.js";
+export const templatePedidos = (doc) => {
+
+
         // btnProductss.setAttribute('data-id', doc.id);
-    
-        const templateInfoPros = `
-        <p>${doc.data().producto}</p>
-        <p>S/. ${doc.data().precio}</p>
+        const divProductss = document.createElement('button');
+        divProductss.className = 'btnProducto';
+        divProductss.setAttribute('data-id', doc.id);
+
+        doc.data().arrOrdenes.forEach(element => {
+                divProductss.innerHTML += `
+                <p>${element.producto}</p>
+                <p>S/. ${element.precio}</p>
     
         `;
-        divProductss.innerHTML = templateInfoPros;
-    
+      
+        });
+
+        return divProductss;
 }

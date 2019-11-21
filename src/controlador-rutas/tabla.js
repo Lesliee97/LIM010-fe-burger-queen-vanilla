@@ -1,8 +1,9 @@
-import {  arr, getPosts } from "../controlador-rutas/funciones.js";
+// import {   getPosts } from "../controlador-rutas/funciones.js";
 import { guardarPedidos } from '../controlador-firebase/controlador-fb.js'
-
+import { arrProducto } from '../controlador-rutas/funciones.js'
 let sumaTotal = 0
 //
+
 export const templateOrders = (doc) => {
   const templateOrdersPrint = document.createElement('tr');
   templateOrdersPrint.innerHTML += `
@@ -14,16 +15,17 @@ export const templateOrders = (doc) => {
     ;
   const containerOrders = document.querySelector('#containerTabla');
   containerOrders.appendChild(templateOrdersPrint);
-  const subtotal = doc.precio * doc.cantidad
+  const subtotal = doc.precio * doc.cantidad;
 
-  sumaTotal += subtotal
+  sumaTotal += subtotal;
 
   const btnEliminar = templateOrdersPrint.querySelector('.btnEliminar');
   btnEliminar.addEventListener('click', (event) => {
     const even = event.target.id;
     containerOrders.removeChild(templateOrdersPrint);
-    removeLocalStorage(arr, even);
+    removeLocalStorage(arrProducto('ordenes'), even);
     templateTotal(sumaTotal -= subtotal);
+
   });
 
 };
@@ -46,7 +48,11 @@ export const templateTotal = () => {
 
   const btnEnviar = templateTotalPrint.querySelector('.btnEnviar');
   btnEnviar.addEventListener('click',()=>{
-   guardarPedidos({arr});
+
+    const arrOrders =arrProducto('ordenes')
+    guardarPedidos({arrOrders});
+    templateTotal(sumaTotal );
+  
     const containerOrders = document.querySelector('#containerTabla');
     containerOrders.innerHTML = '';
     const containerTotal = document.querySelector('#total');
@@ -61,7 +67,8 @@ export const templateTotal = () => {
 
 
 const removeLocalStorage = (arrP, index) => {
-  arrP = JSON.parse(localStorage.getItem('ordenes'));
+
+  arrP = arrProducto('ordenes');
   arrP.splice(index, 1);
   localStorage.setItem('ordenes', JSON.stringify(arrP));
 }

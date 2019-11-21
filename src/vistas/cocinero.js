@@ -1,4 +1,5 @@
-import { getOrders } from "../controlador-firebase/controlador-fb.js";
+ import { getOrders } from "../controlador-firebase/controlador-fb.js";
+// import { orders } from "../controlador-firebase/controlador-fb.js";
 import {templatePedidos} from "../controlador-rutas/funciones-cocinero.js"
 export default () => {
     const viewAccesories = `
@@ -11,25 +12,33 @@ export default () => {
   divElement.innerHTML = viewAccesories;
  const btnCocinero = divElement.querySelector('#buttonViewOrders')
  btnCocinero.addEventListener('click', () => {
-    const containerGeneral= document.getElementById('containerGeneral');
+    const containerGeneral= divElement.querySelector('#containerGeneral');
     containerGeneral.innerHTML = '';
-   
+    
     getOrders("Pedidos")
     .then((querySnapshot )=> {
      
       querySnapshot.forEach(doc => {
-          // doc.data() is never undefined for query doc snapshots
-          // containerGeneral.appendChild(templatePedidos(doc));
-          containerGeneral.innerHTML += `
-          <p>${doc.data().x[0]}</p>
-          <p>S/. ${doc.data().x[0].precio}</p>
-      
-          `;
+      containerGeneral.appendChild(templatePedidos(doc))
+    
           console.log( doc.id, doc.data());
       });
     
       })
-      .catch(() => console.log('error'));
+      .catch((e) => console.log(e));
+    
+            
   })
   return divElement;
 }
+  // orders('Pedidos').orderBy(doc)
+      // .then((querySnapshot )=> {
+           
+      //   querySnapshot.forEach(doc => {
+      //   containerGeneral.appendChild(templatePedidos(doc))
+      
+      //       console.log( doc.id, doc.data());
+      //   });
+    
+      // })
+      //   .catch((e) => console.log(e));
