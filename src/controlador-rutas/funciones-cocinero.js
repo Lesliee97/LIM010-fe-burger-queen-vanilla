@@ -7,14 +7,18 @@ export const templatePedidos = (doc) => {
         divProductss.className = 'btnProducto';
         divProductss.setAttribute('data-id', doc.id);
 
-        doc.data().arrOrdenes.forEach(element => {
-                divProductss.innerHTML += `
-                <p>${element.producto}</p>
-                <p>S/. ${element.precio}</p>
-    
-        `;
-      
-        });
+        const data = doc.data()
+
+        if (data.arrOrders) {
+                data.arrOrders.forEach(element => {
+                        divProductss.innerHTML += `
+                        <p>${element.producto}</p>
+                        <p>S/. ${element.precio}</p>
+            
+                `;
+              
+                });
+        }
 
         return divProductss;
 }

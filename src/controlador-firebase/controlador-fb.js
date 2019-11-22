@@ -7,6 +7,9 @@ export const verDataFb = (string) => {
 export const  getOrders = (arrayObj ) => {
    return firebase.firestore().collection(arrayObj).get();
 };
+export const guardarFecha = (string) => {
+   return firebase.firestore().collection('ExtraInfo').add(string);
+}
 // export const orders = (string) => {
 // return firebase.firestore().collection(string).orderBy('arrOrder');
 // }

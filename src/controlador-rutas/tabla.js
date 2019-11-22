@@ -1,8 +1,8 @@
 // import {   getPosts } from "../controlador-rutas/funciones.js";
-import { guardarPedidos } from '../controlador-firebase/controlador-fb.js'
-import { arrProducto } from '../controlador-rutas/funciones.js'
+import { guardarPedidos} from '../controlador-firebase/controlador-fb.js'
+import { arrProducto, extraInfoLs } from '../controlador-rutas/funciones.js'
 let sumaTotal = 0
-//
+//, guardarFecha
 
 export const templateOrders = (doc) => {
   const templateOrdersPrint = document.createElement('tr');
@@ -48,18 +48,22 @@ export const templateTotal = () => {
 
   const btnEnviar = templateTotalPrint.querySelector('.btnEnviar');
   btnEnviar.addEventListener('click',()=>{
-
-    const arrOrders =arrProducto('ordenes')
+  
+    const arrOrders = arrProducto('ordenes')
+     const fecha = extraInfoLs('ExtraInfo')
+    // console.log(fecha)
+   guardarFecha(fecha);
     guardarPedidos({arrOrders});
+   console.log(guardarPedidos)
     templateTotal(sumaTotal );
   
     const containerOrders = document.querySelector('#containerTabla');
     containerOrders.innerHTML = '';
     const containerTotal = document.querySelector('#total');
     containerTotal.innerHTML = '';
-    const deleteArr = arr.splice(0,arr.length);
+    // const deleteArr = arrProducto.splice(0,arrProducto.length);
    
-    // localStorage.removeItem('ordenes');
+  //  localStorage.removeItem('ordenes');
   })
 
 }
