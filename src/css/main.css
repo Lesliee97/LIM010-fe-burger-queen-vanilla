@@ -344,3 +344,20 @@ button.btnProducto {
     width: 100px;
     height: 80px;
 }
+/*  PAGE COCINERO */
+#containerGeneral{
+    display: flex;
+    color: black;
+    /* justify-content: center; */
+    justify-content: space-evenly;
+}
+.divPedidos {
+color: black;
+}
+.divPedidos p {
+    color: black;
+
+}
+.text-center{
+    text-align: center;
+}

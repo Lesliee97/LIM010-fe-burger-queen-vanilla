@@ -50,11 +50,25 @@ export const templateTotal = () => {
   btnEnviar.addEventListener('click',()=>{
   
     const arrOrders = arrProducto('ordenes')
-     const fecha = extraInfoLs('ExtraInfo')
-    // console.log(fecha)
-   guardarFecha(fecha);
-    guardarPedidos({arrOrders});
-   console.log(guardarPedidos)
+    // const showTime = () => {
+    //   const fecha = new Date;
+    //   const hour = fecha.getHours()
+    //   const minutes = fecha.getMinutes()
+    //   const seconds = fecha.getSeconds()
+    //   const prinTime = hour + ':' + minutes + ':' + seconds ;
+    //   return prinTime;
+    // }
+     const hours = firebase.firestore.FieldValue.serverTimestamp();
+    
+    // const fecha = moment().format('LTS');
+  //  guardarFecha(fecha);`  ${parseInt(new Date().getHours())} : ${parseInt(new Date().getMinutes())}`
+  const obj= {
+   fecha:  hours ,
+   ordenes:arrProducto('ordenes'),
+   estado: 'en preparación'
+  }
+    guardarPedidos(obj);
+  //  console.log(guardarPedidos)
     templateTotal(sumaTotal );
   
     const containerOrders = document.querySelector('#containerTabla');

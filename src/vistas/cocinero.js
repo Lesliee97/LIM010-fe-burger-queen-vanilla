@@ -3,10 +3,11 @@ import { getOrders } from "../controlador-firebase/controlador-fb.js";
 import { templatePedidos } from "../controlador-rutas/funciones-cocinero.js"
 export default () => {
   const viewAccesories = `
+  <section>
   <h2 class="text-center">Cocinero</h2>
- 
-  <input id="buttonViewOrders" type="button"></input>
-  <div id="containerGeneral" ></div>`;
+  <input id="buttonViewOrders" type="button"></input>  
+  </section>
+  <section id="containerGeneral"></section>`;
 
   const divElement = document.createElement('section');
   divElement.innerHTML = viewAccesories;
@@ -17,11 +18,10 @@ export default () => {
 
     getOrders("Pedidos")
       .then((querySnapshot) => {
-
+      
         querySnapshot.forEach(doc => {
           containerGeneral.appendChild(templatePedidos(doc))
-          
-          console.log(doc.id, doc.data());
+        console.log(doc)
         });
 
       })
