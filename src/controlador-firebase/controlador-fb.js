@@ -7,8 +7,9 @@ export const verDataFb = (string) => {
 export const  getOrders = (arrayObj ) => {
    return firebase.firestore().collection(arrayObj).orderBy('fecha').get();
 };
-export const guardarFecha = (string, collection) => {
-   return firebase.firestore().collection(collection).orderBy(string).get();
+
+export const saveStatus = (string, obj) => {
+   firebase.firestore().collection('Pedidos').doc(string).update(obj);
 }
 
 // export const orders = (string) => {

@@ -1,4 +1,5 @@
 // import { orders } from "../controlador-firebase/controlador-fb.js";
+import { saveStatus } from "../controlador-firebase/controlador-fb.js";
 export const templatePedidos = (doc) => {
 
 
@@ -7,8 +8,10 @@ export const templatePedidos = (doc) => {
         divProductss.className = 'divPedidos';
         divProductss.setAttribute('data-id', doc.id);
         let acum = '';
-        const data = doc.data()
         
+        const data = doc.data()
+        // const containerGeneral = document.querySelector('#containerGeneral');
+        // containerGeneral.innerHTML = '';
         if (data.ordenes) {
                 data.ordenes.forEach(element => {
                         acum += `
@@ -22,15 +25,24 @@ export const templatePedidos = (doc) => {
         }
         const date = data.fecha;
         const date2 = date.toDate();
-     
+        
         divProductss.innerHTML += `
          <p>${date2.getHours()}:${date2.getMinutes()}:${date2.getSeconds()}</p>
         ${acum}
-        <select>
-        <option>Pediente</option>
-        <option>Preparando</option>
-        <option>Entegado</option>
+        <select id="status">
+        <option value="Estado" selected disabled hidden>Estado</option>
+        <option class = "red" value="Pendiente">Pendiente</option>
+        <option class = "yellow" value="Preparando">Preparando</option>
+        <option class = "green" value="Entregado">Entregado</option>
         </select>`
-
+        const status = divProductss.querySelector('#status')
+        status.addEventListener('change' , () => {
+                // const estado = data.estado;
+                const valueStatus = status.value;
+                saveStatus(doc.id,{estado:valueStatus})
+               
+        })
+       
         return divProductss;
-}
+     
+};

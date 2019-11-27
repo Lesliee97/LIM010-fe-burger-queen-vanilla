@@ -361,3 +361,28 @@ color: black;
 .text-center{
     text-align: center;
 }
+/* combobox */
+.red{
+    background-color: red;
+    color: #fff;
+}
+.yellow{
+    background: #FFC700;
+    color: #fff
+}
+.green{
+    background-color: green ;
+    color: #fff
+}
+#status{
+    
+    width: 150px;
+    height: 30px;
+    border: 2px solid #FFC700;
+    font-size: 15px;
+    border-radius: 5px;
+    box-shadow: grey;
+}
+/* #buttonViewOrders{
+
+} */

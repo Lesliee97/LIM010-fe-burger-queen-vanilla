@@ -15,13 +15,14 @@ export default () => {
   btnCocinero.addEventListener('click', () => {
     const containerGeneral = divElement.querySelector('#containerGeneral');
     containerGeneral.innerHTML = '';
-
+    console.log(containerGeneral.innerHTML)
     getOrders("Pedidos")
       .then((querySnapshot) => {
       
         querySnapshot.forEach(doc => {
           containerGeneral.appendChild(templatePedidos(doc))
         console.log(doc)
+       
         });
 
       })
@@ -30,6 +31,7 @@ export default () => {
 
   })
   return divElement;
+  
 }
   // orders('Pedidos').orderBy(doc)
       // .then((querySnapshot )=> {
