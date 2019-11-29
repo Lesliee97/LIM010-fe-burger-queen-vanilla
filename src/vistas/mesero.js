@@ -17,8 +17,8 @@ export default () => {
                             <input type="text" class="inputTexto" id="inputTexto" placeholder="Nombre cliente">
                             <button id="btnOk">→</button>
                         </div>
-                        <button id="btnDesayuno" class="breakfast">Desayuno</button>
-                        <button id="btnAlmuerzo" class="lunch">Almuerzo y Cena</button>
+                        <div class="mediaButtons"><button id="btnDesayuno" class="breakfast">Desayuno</button>
+                        <button id="btnAlmuerzo" class="lunch">Almuerzo y Cena</button></div>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,9 @@ export default () => {
     <section id="perifericoIzquierdo">
       <div class="nuevoFlex">
         <div class="childFlex">
-          <a href="#" class="verListado"></a>
+          <div class="linkTwo">
+          <a href="#/cocinero" class="verListado"></a>
+          </div>
           <div id="containerExtremoIzquierdo">
             <h2 id="cliente">Cliente : </h2>
             <table id="tblDatos">
@@ -68,12 +70,13 @@ export default () => {
     box.innerHTML = '';
     verDataFb('Desayuno')
       .then((snapshot) => {
-        snapshot.docs.forEach(doc => {
+        snapshot.forEach(doc => {
           box.appendChild(templateProducts(doc));
+          console.log(doc)
         });
-
+           
       })
-      .catch(() => console.log('error'));
+      .catch((error) => console.log(error));
   })
   const almuerzo = divElement.querySelector('#btnAlmuerzo');
   almuerzo.addEventListener('click', () => {
@@ -81,9 +84,8 @@ export default () => {
     box.innerHTML = '';
     verDataFb('Menú')
       .then((snapshot) => {
-        snapshot.docs.forEach(doc => {
+        snapshot.forEach(doc => {
           box.appendChild(templateProducts(doc));
-
         });
       })
       .catch(() => console.log('error'));

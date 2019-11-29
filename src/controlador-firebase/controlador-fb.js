@@ -8,10 +8,7 @@ export const  getOrders = (arrayObj ) => {
    return firebase.firestore().collection(arrayObj).orderBy('fecha').get();
 };
 
-export const saveStatus = (string, obj) => {
-   firebase.firestore().collection('Pedidos').doc(string).update(obj);
+export const saveStatus = (id, obj) => {
+   firebase.firestore().collection('Pedidos').doc(id).update(obj);
 }
 
-// export const orders = (string) => {
-// return firebase.firestore().collection(string).orderBy('arrOrder');
-// }

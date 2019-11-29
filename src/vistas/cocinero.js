@@ -1,28 +1,36 @@
 import { getOrders } from "../controlador-firebase/controlador-fb.js";
-// import { orders } from "../controlador-firebase/controlador-fb.js";
 import { templatePedidos } from "../controlador-rutas/funciones-cocinero.js"
 export default () => {
   const viewAccesories = `
-  <section>
-  <h2 class="text-center">Cocinero</h2>
-  <input id="buttonViewOrders" type="button"></input>  
-  </section>
-  <section id="containerGeneral"></section>`;
+  <section id="pantallaEntrega">
+        
+        <div class="newviewDely">
+         
+            <div class="nextviewDely">
+            <input id="buttonViewOrders" type="button" value="Ver Pedidos"></input>
+                <a href="" class="newiconoPrincipal"></a>
+            </div>
+         <section id="containerGeneral"></section>
+           
+            </div>
+        </div>
+    </section>
+  
+  `;
 
-  const divElement = document.createElement('section');
+  const divElement = document.createElement('div');
   divElement.innerHTML = viewAccesories;
   const btnCocinero = divElement.querySelector('#buttonViewOrders')
   btnCocinero.addEventListener('click', () => {
     const containerGeneral = divElement.querySelector('#containerGeneral');
     containerGeneral.innerHTML = '';
-    console.log(containerGeneral.innerHTML)
+
     getOrders("Pedidos")
-      .then((querySnapshot) => {
-      
-        querySnapshot.forEach(doc => {
+      .then((snapshot) => {
+        snapshot.forEach(doc => {
           containerGeneral.appendChild(templatePedidos(doc))
-        console.log(doc)
-       
+
+
         });
 
       })
@@ -31,16 +39,6 @@ export default () => {
 
   })
   return divElement;
-  
+
 }
-  // orders('Pedidos').orderBy(doc)
-      // .then((querySnapshot )=> {
-
-      //   querySnapshot.forEach(doc => {
-      //   containerGeneral.appendChild(templatePedidos(doc))
-
-      //       console.log( doc.id, doc.data());
-      //   });
-
-      // })
-      //   .catch((e) => console.log(e));
+{/* <div id="imagenDelivery"><img  src="./img/tomato-burger-and-fried-fries-1600727.jpg"/></div> */ }

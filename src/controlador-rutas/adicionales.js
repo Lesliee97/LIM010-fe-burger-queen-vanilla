@@ -30,12 +30,12 @@ let acum2 = '';
       <button class = "agregar">Agregar</button>
  `;
   
- const containerBurger = document.querySelector(`.btnProducto[data-id=${doc.id}]`); //papa
- const lastChild = containerBurger.lastElementChild; // el ultimo hijo de box 
-if (lastChild.classList.contains('btnAdicionales')){ //si el ultimo hijo tiene esa clase remuevelo
+ const containerBurger = document.querySelector(`.btnProducto[data-id=${doc.id}]`); 
+ const lastChild = containerBurger.lastElementChild; 
+if (lastChild.classList.contains('btnAdicionales')){ 
     const removeLastChild = containerBurger.removeChild(lastChild);     
 }else {   
- //NADA .
+ //
 }
 containerBurger.appendChild(containerAdi);
 
@@ -45,7 +45,7 @@ containerBurger.appendChild(containerAdi);
 
 btnSabores.forEach(elemen =>{
     elemen.addEventListener('click', (e) =>{ 
-    //    console.log( obj.sabor = e.target.dataset.sabor);
+   
      obj.sabor= e.target.dataset.sabor;
      
       });
@@ -79,9 +79,7 @@ const btnAdicional = containerBurger.querySelectorAll('.adicional');
     templateOrders(nuevoObj);
     templateTotal(nuevoObj);
     obj.adicional=[]
-    // console.log(obj.adicional)
-    
-
+  
  })
 
 }

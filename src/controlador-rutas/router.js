@@ -1,4 +1,6 @@
 import { components } from '../vistas/index.js';
+import { getOrders } from '../controlador-firebase/controlador-fb.js';
+import { templatePedidos } from './funciones-cocinero.js';
 
 
 
