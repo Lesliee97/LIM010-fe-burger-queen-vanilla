@@ -10,10 +10,10 @@ export const changeTmp = (hash) => {
     sectionMain.innerHTML = '';
     switch (hash) {
         case '': 
-        sectionMain.appendChild(components.home());
+        sectionMain.appendChild(components.login());
         break;
-        case '#/mesero': 
-        sectionMain.appendChild(components.mesero());
+        case '#/home': 
+        sectionMain.appendChild(components.home());
         break;
         case '#/cocinero': 
         sectionMain.appendChild(components.cocinero());
